@@ -15,6 +15,8 @@
 ## Installation 
 ![Finalize task](./docs/media/installApp.gif)
 
+Currently [PWA](https://caniuse.com/?search=PWA) is only supported in Google Chrome and Microsoft Edge :(
+
 
 ## Website
 
