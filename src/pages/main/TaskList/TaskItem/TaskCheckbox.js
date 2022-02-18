@@ -46,7 +46,9 @@ const TaskCheckbox = ({finished,taskId,toggleTask}) => {
     }
     else{
         return <Container >
-            <Checkbox onChange={handleToggle} checked={finished}/>
+            <Checkbox style={{
+                transform: "scale(1.5)",
+            }}  onChange={handleToggle} checked={finished}/>
         </Container>
     }
 

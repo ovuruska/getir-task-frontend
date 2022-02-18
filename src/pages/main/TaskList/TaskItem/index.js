@@ -12,6 +12,13 @@ import TodoItem from "../../../../components/TodoItem";
 import getirPalette from "../../../../constants/getirPalette"
 
 
+const Container = ({children,className}) => {
+    return <div className={className}>
+            {children}
+        </div>
+}
+
+
 class Index extends Component {
 
     constructor(props) {
@@ -67,6 +74,13 @@ class Index extends Component {
         this.setState({value})
     }
 
+    handleKey = ({key}) => {
+        const {value} = this.state
+        if(value !== "" && key === "Enter"){
+            this.handleRename()
+        }
+    }
+
     render() {
         const {readOnly, value, waiting} = this.state
         const {taskId, finished} = this.props
@@ -74,20 +88,19 @@ class Index extends Component {
         const className = "task-item " + ((finished) ? "task-item--finished" : "")
 
         if (readOnly) {
-            return <div className={className}>
+            return <Container className={className}>
                 <TaskCheckbox taskId={taskId} finished={finished}/>
                 <TodoItem value={value}/>
                 <TodoButton sx={{backgroundColor: getirPalette.darkGray}} disabled={value === ""} icon={<EditIcon/>}
                             onClick={this.handleEdit} waiting={waiting}/>
-
-            </div>
+            </Container>
         } else {
-            return <div className={className}>
+            return <Container className={className}>
                 <TaskCheckbox taskId={taskId} finished={finished}/>
-                <TodoInput value={value} onChange={this.updateValue}/>
+                <TodoInput sx={{cursor:"move"}} onKeyDown={this.handleKey} value={value} onChange={this.updateValue}/>
                 <TodoButton sx={{backgroundColor: getirPalette.darkGray}} disabled={value === ""} icon={<TickIcon/>}
                             onClick={this.handleRename} waiting={waiting}/>
-            </div>
+            </Container>
         }
     }
 

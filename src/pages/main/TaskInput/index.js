@@ -56,11 +56,19 @@ class TaskInput extends Component {
             })
     }
 
+    handleKey = ({key}) => {
+        const {value} = this.state
+
+        if(value !== "" && key === "Enter"){
+            this.handleClick()
+        }
+    }
+
     render(){
         const {value,waiting} = this.state
         return <div className={"task-input"}>
-            <TodoInput  sx={{zIndex:1000,backgroundColor:getirPalette.purple,color:getirPalette.brightGray}} onChange={this.handleChange} value={value}/>
-            <TodoButton sx={{zIndex:1000,backgroundColor:getirPalette.yellow}} waiting={false} icon={<AddIcon/>} onClick={this.handleClick} disabled={value === "" || waiting}/>
+            <TodoInput onKeyDown={this.handleKey} sx={{zIndex:1000,backgroundColor:getirPalette.purple,color:getirPalette.brightGray}} onChange={this.handleChange} value={value}/>
+            <TodoButton sx={{zIndex:1000,backgroundColor:getirPalette.yellow}} waiting={waiting} icon={<AddIcon/>} onClick={this.handleClick} disabled={value === "" || waiting}/>
         </div>
     }
 }
