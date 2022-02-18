@@ -7,7 +7,7 @@ const TodoButton = ({sx = {}, onClick = null, disabled = false, icon = null, wai
         return <CircularProgress size={"4rem"}/>
     } else {
         return <Button
-            sx={Object.assign({height: "4rem", width: "4rem"}, sx)}
+            sx={Object.assign({height: "4rem", width: "4rem",minWidth:"4rem",minHeight:"4rem"}, sx)}
             onClick={onClick}
             disabled={disabled}
             variant="contained"
