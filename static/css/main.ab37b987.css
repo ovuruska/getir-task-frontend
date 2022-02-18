@@ -1,0 +1,2 @@
+*{box-sizing:border-box;margin:0}html{background-color:#c8b1aa;font-size:16px}@media only screen and (max-width:450px){html{font-size:12px}}#root{max-height:100vh;max-width:100vw;min-height:100vh;min-width:100vw;overflow-x:hidden;overflow-y:scroll}.task-input{display:flex;min-width:100%;position:-webkit-sticky;position:sticky;top:0;z-index:100}.task-item{background-color:#b8d3f8;display:flex;flex-direction:row;height:4rem;max-width:100%;transition:all .2s}.task-item--finished{background-color:#adff2f;transition:all .2s}
+/*# sourceMappingURL=main.ab37b987.css.map*/
