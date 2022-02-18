@@ -1,1 +1,1 @@
-export default "http://localhost:8080"
+export default "https://us-central1-getir-backend.cloudfunctions.net/api"

@@ -5,6 +5,7 @@ import TaskInput from "./TaskInput";
 import {SET_TASKS} from "../../redux/actions";
 import TaskList from "./TaskList";
 import apiServer from "../../constants/apiServer";
+import Title from "./Title"
 
 class Main extends Component {
 
@@ -26,6 +27,7 @@ class Main extends Component {
     render(){
 
         return <section className={"mainpage"}>
+            <Title/>
             <TaskInput/>
             <TaskList/>
         </section>
