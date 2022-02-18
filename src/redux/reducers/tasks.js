@@ -2,7 +2,7 @@ import {
     RENAME_TASK,
     ADD_TASK,
     TOGGLE_TASK,
-    SET_TASKS
+    SET_TASKS, REMOVE_TASK
 } from "../actions"
 
 export default (
@@ -33,6 +33,9 @@ export default (
             })
         case SET_TASKS:
             return payload
+        case REMOVE_TASK:
+            return state.filter(({_id}) => id !== _id)
+
         default:
             return state
     }

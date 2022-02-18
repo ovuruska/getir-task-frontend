@@ -1,10 +1,14 @@
 import React,{useState} from "react"
 import {connect} from "react-redux";
 import {Checkbox, CircularProgress} from "@mui/material";
-import apiServer from "../../../constants/apiServer";
-import {TOGGLE_TASK} from "../../../redux/actions";
+import apiServer from "../../../../constants/apiServer";
+import {TOGGLE_TASK} from "../../../../redux/actions";
 
-
+const Container = ({children}) => {
+    return <div style={{height:"4rem",width:"4rem",display: "flex",justifyContent:"center",alignItems:"center"}}>
+        {children}
+    </div>
+}
 
 const TaskCheckbox = ({finished,taskId,toggleTask}) => {
 
@@ -36,11 +40,14 @@ const TaskCheckbox = ({finished,taskId,toggleTask}) => {
         })
     }
     if (waiting){
-        return <CircularProgress/>
+        return <Container >
+            <CircularProgress/>
+        </Container>
     }
     else{
-        return  <Checkbox onChange={handleToggle} checked={finished}/>
-
+        return <Container >
+            <Checkbox onChange={handleToggle} checked={finished}/>
+        </Container>
     }
 
 

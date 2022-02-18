@@ -1,12 +1,12 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
-import {Button, OutlinedInput, TextField} from "@mui/material";
 import {Add as AddIcon} from '@mui/icons-material';
 import "./style.css"
-import {ADD_TASK} from "../../redux/actions";
-import TodoInput from "../TodoInput";
-import TodoButton from "../TodoButton";
-
+import {ADD_TASK} from "../../../redux/actions";
+import TodoInput from "../../../components/TodoInput";
+import TodoButton from "../../../components/TodoButton";
+import getirPalette from "../../../constants/getirPalette";
+import apiServer from "../../../constants/apiServer";
 
 class TaskInput extends Component {
 
@@ -33,7 +33,7 @@ class TaskInput extends Component {
             waiting:true,
             value:""
         })
-        fetch("http://localhost:8080/lists/genesis/tasks/create",{
+        fetch(`${apiServer}/lists/genesis/tasks/create`,{
             method:"POST",
             cors:"cors",
             body:JSON.stringify({
@@ -59,8 +59,8 @@ class TaskInput extends Component {
     render(){
         const {value,waiting} = this.state
         return <div className={"task-input"}>
-            <TodoInput onChange={this.handleChange} value={value}/>
-            <TodoButton waiting={false} icon={<AddIcon/>} onClick={this.handleClick} disabled={value === "" || waiting}/>
+            <TodoInput  sx={{zIndex:1000,backgroundColor:getirPalette.purple,color:getirPalette.brightGray}} onChange={this.handleChange} value={value}/>
+            <TodoButton sx={{zIndex:1000,backgroundColor:getirPalette.yellow}} waiting={false} icon={<AddIcon/>} onClick={this.handleClick} disabled={value === "" || waiting}/>
         </div>
     }
 }

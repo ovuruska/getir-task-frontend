@@ -1,15 +1,16 @@
 import React,{Component} from "react"
 import "./style.css"
 import {connect} from "react-redux";
-import TaskInput from "../../components/TaskInput";
+import TaskInput from "./TaskInput";
 import {SET_TASKS} from "../../redux/actions";
-import TaskList from "../../components/TaskList";
+import TaskList from "./TaskList";
+import apiServer from "../../constants/apiServer";
 
 class Main extends Component {
 
     componentDidMount() {
         const {setTasks} = this.props
-        fetch("http://localhost:8080/lists/genesis/tasks",{
+        fetch(`${apiServer}/lists/genesis/tasks`,{
             method:"GET",
             cors:"cors",
 
