@@ -1,12 +1,15 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
 import {RENAME_TASK} from "../../../redux/actions";
-import {Button, ListItem, ListItemText, OutlinedInput} from "@mui/material";
+import {Button, CircularProgress, ListItem, ListItemText, OutlinedInput} from "@mui/material";
 import {Edit as EditIcon,Done as TickIcon} from "@mui/icons-material";
 
-import "../style.css"
+import "./style.css"
 import apiServer from "../../../constants/apiServer"
 import TaskCheckbox from "./TaskCheckbox";
+import TodoButton from "../../TodoButton";
+import TodoInput from "../../TodoInput";
+import TodoItem from "../../TodoItem";
 
 
 
@@ -71,30 +74,20 @@ class Index extends Component {
         const {readOnly,value,waiting} = this.state
         const {taskId,finished} = this.props
 
+        const className = "task-item " + ((finished) ? "task-item--finished" : "")
+
         if(readOnly){
-            return <div className={"task-item"}>
+            return <div className={className}>
                 <TaskCheckbox taskId={taskId} finished={finished}/>
-                <ListItem>
-                    <ListItemText primary={value}/>
-                </ListItem>
-                <Button
-                    className={"task-input__loading"}
-                    onClick={this.handleEdit}
-                    variant="contained"
-                    startIcon={<EditIcon />}
-                />
+                <TodoItem value={value}/>
+                <TodoButton disabled={value===""} icon={<EditIcon/>} onClick={this.handleEdit} waiting={waiting}/>
+
             </div>
         }else{
-            return <div className={"task-item"}>
+            return <div className={className}>
                 <TaskCheckbox taskId={taskId} finished={finished}/>
-                <OutlinedInput value={value} onChange={this.updateValue} placeholder="Please enter text" />
-                <Button
-                    disabled={waiting}
-                    className={"task-input__loading"}
-                    onClick={this.handleRename}
-                    variant="contained"
-                    startIcon={<TickIcon />}
-                />
+                <TodoInput value={value} onChange={this.updateValue}/>
+                <TodoButton disabled={value===""} icon={<TickIcon/>} onClick={this.handleRename} waiting={waiting}/>
             </div>
         }
     }

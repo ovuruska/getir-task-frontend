@@ -1,9 +1,11 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
-import {Button, TextField} from "@mui/material";
+import {Button, OutlinedInput, TextField} from "@mui/material";
 import {Add as AddIcon} from '@mui/icons-material';
 import "./style.css"
 import {ADD_TASK} from "../../redux/actions";
+import TodoInput from "../TodoInput";
+import TodoButton from "../TodoButton";
 
 
 class TaskInput extends Component {
@@ -57,14 +59,8 @@ class TaskInput extends Component {
     render(){
         const {value,waiting} = this.state
         return <div className={"task-input"}>
-            <TextField value={value} onChange={this.handleChange} className={"task-input__text-field"} label="Task" type="search" />
-            <Button
-                className={"task-input__loading"}
-                onClick={this.handleClick}
-                disabled={value === "" || waiting}
-                variant="contained"
-                startIcon={<AddIcon />}
-            />
+            <TodoInput onChange={this.handleChange} value={value}/>
+            <TodoButton waiting={false} icon={<AddIcon/>} onClick={this.handleClick} disabled={value === "" || waiting}/>
         </div>
     }
 }

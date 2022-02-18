@@ -3,12 +3,9 @@ import {connect} from "react-redux"
 import {List} from "@mui/material";
 import TaskItem from "./TaskItem";
 
-
-
-
 const TaskList = ({tasks}) => {
 
-    return <List>
+    return <List sx={{margin:0,padding:0}}>
         {
             tasks.map(({name,_id,finished}) => {
                 return <TaskItem name={name} finished={finished} taskId={_id} key={_id} />

@@ -10,9 +10,11 @@ html {
 }
 
 #root{
+
   min-width:100vw;
   max-width:100vw;
   max-height:100vh;
   min-height:100vh;
-  overflow:hidden;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
